@@ -1,8 +1,8 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '4.1.8'
 
-gem 'pg'
+gem 'pg', '~> 0.18'
 gem 'draper'
 gem 'decent_exposure'
 gem 'decent_decoration'
@@ -19,6 +19,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'travis'
 gem 'ffaker'
 gem 'konf'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 group :development do
   gem 'spring'
