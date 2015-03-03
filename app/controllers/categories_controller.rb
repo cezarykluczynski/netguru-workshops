@@ -1,9 +1,16 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
-  
+  before_action :authenticate_user!, :redirect_non_admins_to_login
+
   expose(:categories)
   expose(:category)
   expose(:product) { Product.new }
+
+  def redirect_non_admins_to_login
+    if not action_name == :index and not action_name == :show and not current_user.admin?
+      redirect_to  :controller => "devise/sessions", :action => :new
+    end
+  end
 
   def index
   end
