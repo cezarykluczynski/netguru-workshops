@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
   expose(:product) { Product.new }
 
   def redirect_non_admins_to_login
-    if action_name != "index" and action_name != "show" and not current_user.admin
+    if action_name != "index" and action_name != "show" and ( not current_user.admin? and not current_user.admin )
       redirect_to :controller => "devise/sessions", :action => :new
     end
   end
