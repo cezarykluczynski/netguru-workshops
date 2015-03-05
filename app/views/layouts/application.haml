@@ -22,7 +22,7 @@
                 = link_to 'Sign up', controller: 'devise/registrations', action: 'new'
             - else
               %li
-                = link_to 'Sign out', controller: 'devise/sessions', action: 'destroy'
+                = link_to 'Sign out', destroy_user_session_path, :method => :delete
     .container-fluid
       .row
         .col-lg-12
