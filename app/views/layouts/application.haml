@@ -13,8 +13,16 @@
       .container-fluid
         .navbar-header
           %span.navbar-brand #{AppConfig.workshops_name}
-        %p.navbar-text.navbar-right
-          Links should go here
+        %nav.collapse.navbar-collapse.bs-navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            - if not user_signed_in?
+              %li
+                = link_to 'Sign in', controller: 'devise/sessions', action: 'new'
+              %li
+                = link_to 'Sign up', controller: 'devise/registrations', action: 'new'
+            - else
+              %li
+                = link_to 'Sign out', controller: 'devise/sessions', action: 'destroy'
     .container-fluid
       .row
         .col-lg-12
