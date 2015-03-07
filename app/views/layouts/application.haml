@@ -23,6 +23,8 @@
                 = link_to 'Sign up', controller: 'devise/registrations', action: 'new'
             - else
               %li
+                = link_to current_user.firstname << '\'s Profile', profile_show_path
+              %li
                 = link_to 'Sign out', destroy_user_session_path, :method => :delete
 
     .container-fluid

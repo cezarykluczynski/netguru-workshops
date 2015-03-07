@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   def admin?
     return @admin
   end
+
+  def name
+    self.firstname + " " + self.lastname
+  end
 end

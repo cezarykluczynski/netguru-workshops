@@ -1,0 +1,77 @@
+%h2= current_user.name << '\' Profile'
+
+.row.profile.listing
+
+  .col-lg-6
+    .panel.panel-default
+      .panel-heading About me
+
+      %ul.list-group
+        %li.list-group-item
+          %b= 'E-mail: '
+          %span= current_user.email
+        %li.list-group-item
+          %b= 'First name: '
+          %span= current_user.firstname
+        %li.list-group-item
+          %b= 'Last name: '
+          %span= current_user.lastname
+        %li.list-group-item
+          %b= 'Account created '
+          %span= time_ago_in_words current_user.created_at
+
+      .panel-heading My stats
+
+      %ul.list-group
+        %li.list-group-item
+          Signed in
+          %span= time_ago_in_words current_user.current_sign_in_at
+        %li.list-group-item
+          Products added
+          %span.badge= current_user.products.size
+        %li.list-group-item
+          Reviews written
+          %span.badge= current_user.reviews.size
+        %li.list-group-item
+          Average rating for a product
+          %span.badge= current_user.reviews.calculate( "average", "rating" ).to_s << "/5"
+
+  .col-lg-6
+    %h3 My latest reviews
+
+    - if reviews.count > 0
+      %table.table.listing.reviews
+        %tr
+          %th
+          %th Content
+          %th Creation date
+          %th My rating
+
+        - reviews.each_with_index do |review, index|
+          %tr
+            %td.id= ( 1 + index ).to_s << "."
+            %td.content= review.content
+            %td.created-at= review.created_at.strftime "%d-%m-%Y"
+            %td.rating
+              %span.badge= review.rating.to_s << "/5"
+
+    - else
+      %p.no-listing You didn't write any reviews yet.
+
+    %h3 Products added by me
+
+    - if products.count > 0
+      %table.table.listing.products
+        %tr
+          %th
+          %th Title
+          %th Price
+
+        - products.each_with_index do |product, index|
+          %tr
+            %td.id= ( 1 + index ).to_s << "."
+            %td.title= link_to product.title, category_product_path(product.category, product)
+            %td.price= product.price
+
+    - else
+      %p.no-listing You didn't add any books yet.

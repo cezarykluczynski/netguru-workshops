@@ -5,6 +5,6 @@ class Review < ActiveRecord::Base
   validates :user_id, :content, :rating, presence: true
 
   def author
-    return self.user.firstname + " " + self.user.lastname
+    return self.user.name
   end
 end

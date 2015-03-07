@@ -1,0 +1,31 @@
+.profile {
+  margin: 0px;
+
+  .id {
+    width: 10%;
+  }
+
+  .reviews {
+    .content {
+      width: 40%;
+    }
+
+    .created-at {
+      width: 30%;
+    }
+
+    .rating {
+      width: 20%;
+    }
+  }
+
+  .products {
+    .price {
+      width: 30%;
+    }
+
+    .title {
+      width: 60%;
+    }
+  }
+}
