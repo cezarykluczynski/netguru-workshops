@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :pass_breadcrumbs
+  before_filter :configure_permitted_parameters
 
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
@@ -7,10 +8,20 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  protected
+
+  def configure_permitted_parameters
+    if controller_name == "registrations"
+      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(
+        :email, :firstname, :lastname, :password, :password_confirmation)
+      }
+    end
+  end
+
   def pass_breadcrumbs
     @breadcrumbs = []
 
-    if not current_user or not  current_user.id
+    if not current_user or not current_user.id or devise_controller?
       return
     end
 
