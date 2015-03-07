@@ -1,0 +1,44 @@
+textarea {
+  resize: vertical;
+}
+
+[class^=button] {
+  @extend .btn, .btn-default, .btn-sm, .glyphicon;
+
+  // buttons labels uses Open Sans
+  font-family: 'Open Sans';
+
+  // only icons have the Glyphicons font
+  &:before {
+    font-family: 'Glyphicons Halflings';
+  }
+}
+
+.button-edit {
+  @extend .btn-success, .glyphicon-pencil;
+}
+
+.button-show {
+  @extend .btn-primary, .glyphicon-zoom-in;
+}
+
+.button-save {
+  @extend .btn-success;
+}
+
+.button-new {
+  @extend .btn-primary, .glyphicon-plus;
+}
+
+.button-remove {
+  @extend .btn-danger, .glyphicon-remove;
+}
+
+.button-back {
+  @extend .btn-default, .glyphicon-backward;
+}
+
+
+.button-auth-action {
+  @extend .btn-success, .glyphicon-forward;
+}

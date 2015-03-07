@@ -1,21 +1,23 @@
-%h1 Listing products
+%h2 Products listing
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Price
-    %th
-    %th
-    %th
-
-  - products.each do |product|
+- if products.count > 0
+  %table.table.listing.products
     %tr
-      %td= product.title
-      %td= product.description
-      %td= product.price
-      %td= link_to 'Show', category_product_path(product.category, product)
-      %td= link_to 'Edit', edit_category_product_path(product.category, product)
-      %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
+      %th Title
+      %th Description
+      %th Price
+      %th Actions
+
+    - products.each do |product|
+      %tr
+        %td.title= product.title
+        %td.description= product.description
+        %td.price= product.price
+        %td.actions
+          = link_to 'Show', category_product_path(product.category, product), class: "button-show"
+          = link_to 'Edit', edit_category_product_path(product.category, product), class: "button-edit"
+          = link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "button-remove"
+- else
+  %p.no-listing Category has no products.
 
 %br

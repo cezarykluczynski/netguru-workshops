@@ -1,17 +1,17 @@
-%p#notice= notice
+- if not notice.nil?
+  %p#notice= notice
 
 %p
-  %b Name:
-  = category.name
+  %b Category name:
+  %span.badge
+    = category.name
+
+= render :template => "products/index"
 
 %p
-  - category.products.each do |product|
-    = product.title
-
-%p
-  %h3 New product
+  %h2 New product
   = render 'products/form'
 
-= link_to 'Edit', edit_category_path(category)
-\|
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+.other-actions
+  = link_to 'Edit', edit_category_path(category), class: 'button-edit'
+  = link_to 'Back', categories_path, class: 'button-back'

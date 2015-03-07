@@ -1,0 +1,32 @@
+// stretch auth form to half of the screen
+.col-lg-12.devise {
+  @extend .col-lg-6;
+}
+
+// devise form styles
+.user_remember_me {
+  position: relative;
+
+  // position checkbox absolutely
+  input[type=checkbox] {
+    margin-right:10px;
+    margin-left: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  // move label away from checkbox
+  label[for=user_remember_me] {
+    cursor: pointer;
+    margin-left: 35px;
+  }
+}
+
+// make devise links into list group
+.devise-links {
+  margin-top: 1.5em;
+  border-top: 1px solid #ccc;
+  padding-top: 1em;
+  padding-right: 0;
+}

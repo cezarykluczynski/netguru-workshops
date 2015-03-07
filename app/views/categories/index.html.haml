@@ -1,21 +1,18 @@
-%h1 Listing categories
+%h1 Categories listing
 
-%table.table
+%table.table.listing.category
   %tr
     %th Name
-    %th
-    %th
-    %th
+    %th Actions
 
   - categories.each do |category|
     %tr
-      %td= category.name
-      %td= link_to 'Show', category
-      - if current_user.admin
-        %td= link_to 'Edit', edit_category_path(category)
-        %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
+      %td.name= category.name
+      %td.actions
+        = link_to 'Show', category, class: "button-show"
+        - if current_user.admin
+          = link_to 'Edit', edit_category_path(category), class: "button-edit"
+          = link_to 'Destroy', category, class: "button-remove", method: :delete, data: { confirm: 'Are you sure?' }
 
 - if current_user.admin
-  = link_to 'New Category', new_category_path
+  = link_to 'New Category', new_category_path, class: "button-new"

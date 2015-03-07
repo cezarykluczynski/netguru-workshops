@@ -1,0 +1,17 @@
+
+- if product.reviews.count > 0
+  %table.table.listing.reviews
+    %tr
+      %th Content
+      %th Author
+      %th Rating
+
+    - product.reviews.each do |review|
+      %tr
+        %td.content= review.content
+        %td.author= review.author
+        %td.rating
+          %span.badge= review.rating.to_s << "/5"
+
+- else
+  %p.no-listing Product has no reviews.

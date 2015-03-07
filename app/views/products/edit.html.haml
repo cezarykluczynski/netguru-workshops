@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', category_product_path(category, product)
-\|
-= link_to 'Back', category_path(category)
+.other-actions
+  = link_to 'Show', category_product_path(category, product), class: "button-show"
+  = link_to 'Back', category_path(category), class: "button-back"

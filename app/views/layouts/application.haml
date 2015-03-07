@@ -2,6 +2,7 @@
 %html{ lang: 'en' }
   %head
     %meta{ charset: 'utf-8' }/
+    %title Workshops
     %meta{ content: 'IE=Edge,chrome=1', 'http-equiv' => 'X-UA-Compatible' }/
     %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }/
     = csrf_meta_tags
@@ -12,7 +13,7 @@
     %nav.navbar.navbar-default
       .container-fluid
         .navbar-header
-          %span.navbar-brand #{AppConfig.workshops_name}
+          = link_to "#{AppConfig.workshops_name}", root_path, class: "navbar-brand"
         %nav.collapse.navbar-collapse.bs-navbar-collapse
           %ul.nav.navbar-nav.navbar-right
             - if not user_signed_in?
@@ -23,7 +24,12 @@
             - else
               %li
                 = link_to 'Sign out', destroy_user_session_path, :method => :delete
+
     .container-fluid
+      - if @breadcrumbs.count > 0
+        %ol.breadcrumb
+          - @breadcrumbs.each do |crumb|
+            %li= raw crumb
       .row
-        .col-lg-12
+        .col-lg-12{:class => ("devise" if [ "sessions", "registrations", "passwords" ].include? controller_name )}
           = yield
