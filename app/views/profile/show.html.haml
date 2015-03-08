@@ -32,9 +32,10 @@
         %li.list-group-item
           Reviews written
           %span.badge= current_user.reviews.size
-        %li.list-group-item
-          Average rating for a product
-          %span.badge= current_user.reviews.calculate( "average", "rating" ).to_s << "/5"
+        - if reviews.count > 0
+          %li.list-group-item
+            Average rating for a product
+            %span.badge= current_user.reviews.calculate( "average", "rating" ).to_s << "/5"
 
   .col-lg-6
     %h3 My latest reviews
