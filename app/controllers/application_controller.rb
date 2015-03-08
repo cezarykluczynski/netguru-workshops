@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  # rescue_from ActionController::RoutingError, :with => :redirect_404
+
+  def redirect_404
+    flash[:error] = 'Page "' << request.env['PATH_INFO'] << '" you were trying to access could not been found.'
+    redirect_to root_path
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -17,6 +24,7 @@ class ApplicationController < ActionController::Base
       }
     end
   end
+
 
   def pass_breadcrumbs
     @breadcrumbs = []

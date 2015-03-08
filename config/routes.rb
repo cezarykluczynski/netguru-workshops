@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   end
 
   root 'categories#index'
+
+  get '*unmatched_route', to: 'application#redirect_404'
 end
