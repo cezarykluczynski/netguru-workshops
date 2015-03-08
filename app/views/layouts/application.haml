@@ -28,6 +28,11 @@
                 = link_to 'Sign out', destroy_user_session_path, :method => :delete
 
     .container-fluid
+      - if not notice.nil?
+        %p#notice= notice
+      - if not flash[:error].nil?
+        %p#error= flash[:error]
+
       - if @breadcrumbs.count > 0
         %ol.breadcrumb
           - @breadcrumbs.each do |crumb|
