@@ -1,4 +1,6 @@
 class ProfileController < ApplicationController
+  before_action :authenticate_user!
+
   expose (:reviews) {
     current_user.reviews.order("created_at DESC").limit(5)
   }
@@ -8,7 +10,5 @@ class ProfileController < ApplicationController
   }
 
   def show
-
-
   end
 end

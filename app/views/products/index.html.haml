@@ -15,8 +15,9 @@
         %td.price= product.price
         %td.actions
           = link_to 'Show', category_product_path(product.category, product), class: "button-show"
-          = link_to 'Edit', edit_category_product_path(product.category, product), class: "button-edit"
-          = link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "button-remove"
+          - if not current_user.nil?
+            = link_to 'Edit', edit_category_product_path(product.category, product), class: "button-edit"
+            = link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }, class: "button-remove"
 - else
   %p.no-listing Category has no products.
 

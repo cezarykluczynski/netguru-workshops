@@ -8,10 +8,12 @@
 
 = render :template => "products/index"
 
-%p
-  %h2 New product
-  = render 'products/form'
+- if not current_user.nil?
+  %p
+    %h2 New product
+    = render 'products/form'
 
 .other-actions
-  = link_to 'Edit', edit_category_path(category), class: 'button-edit'
+  - if not current_user.nil?
+    = link_to 'Edit', edit_category_path(category), class: 'button-edit'
   = link_to 'Back', categories_path, class: 'button-back'

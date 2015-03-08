@@ -25,7 +25,7 @@
       %ul.list-group
         %li.list-group-item
           Signed in
-          %span= time_ago_in_words current_user.current_sign_in_at
+          %span= time_ago_in_words( current_user.current_sign_in_at ) << " ago"
         %li.list-group-item
           Products added
           %span.badge= current_user.products.size

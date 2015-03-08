@@ -21,7 +21,8 @@ class ApplicationController < ActionController::Base
   def pass_breadcrumbs
     @breadcrumbs = []
 
-    if not current_user or not current_user.id or devise_controller? or controller_name == "profile"
+    # if not current_user or not current_user.id or
+    if devise_controller? or controller_name == "profile"
       return
     end
 

@@ -1,6 +1,7 @@
-%h1 Editing product
+- if not current_user.nil?
+  %h1 Editing product
 
-= render 'form'
+  = render 'form'
 
 .other-actions
   = link_to 'Show', category_product_path(category, product), class: "button-show"

@@ -21,9 +21,11 @@
 %h3 Reviews listing
 = render :template => "reviews/index"
 
-%h3 Add review
-= render 'reviews/form'
+- if not current_user.nil?
+  %h3 Add review
+  = render 'reviews/form'
 
 .other-actions
-  = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'button-edit'
+  - if not current_user.nil?
+    = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'button-edit'
   = link_to 'Back', category_products_path, class: 'button-back'

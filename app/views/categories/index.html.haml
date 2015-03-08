@@ -10,9 +10,9 @@
       %td.name= category.name
       %td.actions
         = link_to 'Show', category, class: "button-show"
-        - if current_user.admin
+        - if not current_user.nil? and current_user.admin
           = link_to 'Edit', edit_category_path(category), class: "button-edit"
           = link_to 'Destroy', category, class: "button-remove", method: :delete, data: { confirm: 'Are you sure?' }
 
-- if current_user.admin
+- if not current_user.nil? and current_user.admin
   = link_to 'New Category', new_category_path, class: "button-new"
