@@ -36,4 +36,8 @@ group :test do
   gem 'database_cleaner'
 end
 
+group :production do
+  gem 'rails_serve_static_assets'
+end
+
 ruby '2.1.5'
